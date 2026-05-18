@@ -74,7 +74,7 @@ def get_claim_period(dt: datetime):
 
 def get_next_claim_reset(dt: datetime):
 	reset = dt.replace(minute=30, second=0, microsecond=0)
-	if dt.minute >= 30 or dt.second > 0 or dt.microsecond > 0:
+	if dt.minute >= 30:
 		reset += timedelta(hours=1)
 	return reset
 
@@ -101,9 +101,11 @@ def get_or_create_profile(data, user_id):
 	profile.setdefault('lis_query_uses', 0)
 	profile.setdefault('unique_digits_uses', 0)
 	today = current_date()
-	# 每天 00:00 重新抽籤
-	if profile['race_date'] != today:
-		profile['race'] = random.choice(['主人', '寧寧', '阿尼的哥哥'])
+	# 每天 00:00 重新抽籤 — 使用 user_id + 日期 作為 seed，確保同一天內在任何重啟下保持一致
+	if profile.get('race_date') != today:
+		races = ['主人', '寧寧', '阿尼的哥哥']
+		seed = f"{uid}-{today}"
+		profile['race'] = random.Random(seed).choice(races)
 		profile['race_date'] = today
 		profile['last_claim_period'] = None
 	return profile
@@ -435,7 +437,7 @@ async def guess(interaction: discord.Interaction, username: str, phonenumber_gue
 		else:
 			bucket['count'] += 1
 		data['user_guess_counts'][uid] = bucket
-		
+
 		if ab_feedback:
 			a = sum(1 for i in range(len(answer)) if answer[i] == phonenumber_guess[i])
 			common = sum(min(answer.count(d), phonenumber_guess.count(d)) for d in set(answer))
@@ -445,12 +447,14 @@ async def guess(interaction: discord.Interaction, username: str, phonenumber_gue
 			remaining = max(0, 8 - bucket['count'])
 			save_data(data)
 			await interaction.response.send_message(f'🔎 {a}A{b}B\n⏰ 還剩 **{remaining}** 次機會', ephemeral=True)
+			await interaction.followup.send(f'{interaction.user.mention} 猜了 `{username}` 的手機號碼，有 {diff} 個位置與答案不一樣。')
 		else:
 			result_str = f'差 {diff} 個'
 			record_guess(data, uid, username, result_str, False)
 			remaining = max(0, 8 - bucket['count'])
 			save_data(data)
 			await interaction.response.send_message(f'🔎 猜測結果：有 {diff} 個位置與答案不一樣。\n⏰ 還剩 **{remaining}** 次機會', ephemeral=True)
+			await interaction.followup.send(f'{interaction.user.mention} 猜了 `{username}` 的手機號碼，有 {diff} 個位置與答案不一樣。')
 
 @bot.tree.command(name='stats', description='查看指定遊戲帳號被猜中的次數')
 @discord.app_commands.describe(username='要查詢的使用者名稱')
@@ -526,11 +530,11 @@ async def shop(interaction: discord.Interaction):
 	embed = discord.Embed(title='🛒 商店商品列表', color=discord.Color.green())
 	embed.add_field(name='額外猜測機會', value='10 金幣 / 1 次\n增加一筆額外猜測機會，不佔每小時 8 次限制。', inline=False)
 	embed.add_field(name='A/B 反饋下次猜測', value='500 金幣 / 1 次\n下一次猜測若錯，改回傳 xA yB。', inline=False)
-	embed.add_field(name='數字計數器', value='1200 金幣 / 1 次\n指定一個數字，系統回傳該數字在 phone number 出現的次數。', inline=False)
+	embed.add_field(name='數字計數器', value='20 金幣 / 1 次\n指定一個數字，系統回傳該數字在 phone number 出現的次數。', inline=False)
 	embed.add_field(name='後五碼猜測', value='400 金幣 / 1 次\n下次猜測只需輸入 5 碼數字（後五碼）。', inline=False)
 	embed.add_field(name='整除餘數', value='800 金幣 / 1 次\n系統隨機選擇 2 或 7，回傳 phone number 除以該數的餘數。', inline=False)
-	embed.add_field(name='最長遞增子序列', value='1200 金幣 / 1 次\n回傳指定 username 的 phone number 的最長遞增子序列長度。', inline=False)
-	embed.add_field(name='包含的數字', value='1000 金幣 / 1 次\n回傳指定 username 的 phone number 中包含的所有數字。', inline=False)
+	embed.add_field(name='最長嚴格遞增子序列', value='1200 金幣 / 1 次\n回傳指定 username 的 phone number 的最長嚴格遞增子序列長度。', inline=False)
+	embed.add_field(name='包含的數字', value='100 金幣 / 1 次\n回傳指定 username 的 phone number 中包含的所有數字。', inline=False)
 	await interaction.response.send_message(embed=embed)
 @bot.tree.command(name='buy', description='在商店購買商品')
 @discord.app_commands.describe(item='要購買的商品', quantity='購買數量')
@@ -540,7 +544,7 @@ async def shop(interaction: discord.Interaction):
 	discord.app_commands.Choice(name='數字計數器', value='digit_counter'),
 	discord.app_commands.Choice(name='後五碼猜測', value='last_five_digits'),
 	discord.app_commands.Choice(name='整除餘數', value='divisor_remainder'),
-	discord.app_commands.Choice(name='最長遞增子序列', value='lis_query'),
+	discord.app_commands.Choice(name='最長嚴格遞增子序列', value='lis_query'),
 	discord.app_commands.Choice(name='包含的數字', value='unique_digits')
 ])
 async def buy(interaction: discord.Interaction, item: str, quantity: int = 1):
@@ -568,7 +572,7 @@ async def buy(interaction: discord.Interaction, item: str, quantity: int = 1):
 		prof['ab_feedback_uses'] += quantity
 		message = f'✅ 購買成功：A/B 反饋次數 +{quantity}。'
 	elif item == 'digit_counter':
-		price = 1200 * quantity
+		price = 20 * quantity
 		if prof['coins'] < price:
 			await interaction.response.send_message(f'❌ 你的金幣不足，需 {price}，但你只有 {prof["coins"]}。', ephemeral=True)
 			return
@@ -602,7 +606,7 @@ async def buy(interaction: discord.Interaction, item: str, quantity: int = 1):
 	elif item == 'lis_query':
 		price = 1200 * quantity
 		if quantity != 1:
-			await interaction.response.send_message('❌ 最長遞增子序列商品一次只能買 1 次。', ephemeral=True)
+			await interaction.response.send_message('❌ 最長嚴格遞增子序列商品一次只能買 1 次。', ephemeral=True)
 			return
 		if prof['coins'] < price:
 			await interaction.response.send_message(f'❌ 你的金幣不足，需 {price}，但你只有 {prof["coins"]}。', ephemeral=True)
@@ -613,7 +617,7 @@ async def buy(interaction: discord.Interaction, item: str, quantity: int = 1):
 		await interaction.response.send_modal(LISModal())
 		return
 	elif item == 'unique_digits':
-		price = 1000 * quantity
+		price = 100 * quantity
 		if quantity != 1:
 			await interaction.response.send_message('❌ 包含的數字商品一次只能買 1 次。', ephemeral=True)
 			return

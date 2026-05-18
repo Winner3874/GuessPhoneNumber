@@ -39,6 +39,11 @@
       "owner": "982997324802424872",
       "phone": "0987654323",
       "success_count": 0
+    },
+    "charhao": {
+      "owner": "1125694048645152769",
+      "phone": "0987879487",
+      "success_count": 1
     }
   },
   "successful_guesses": {
@@ -61,19 +66,22 @@
     ],
     "謝嘉穎": [],
     "blame67": [],
-    "test2": []
+    "test2": [],
+    "charhao": [
+      "851368582117195836"
+    ]
   },
   "user_guess_counts": {
     "982997324802424872": {
-      "hour": "2026051718",
-      "count": 1
+      "hour": "2026051811",
+      "count": 2
     },
     "1289536156240838681": {
       "hour": "2026051717",
       "count": 1
     },
     "851368582117195836": {
-      "hour": "2026051718",
+      "hour": "2026051811",
       "count": 8
     },
     "946767231914766356": {
@@ -87,13 +95,13 @@
   },
   "user_profiles": {
     "982997324802424872": {
-      "race": "寧寧",
-      "coins": 308,
-      "race_date": "2026-05-17",
+      "race": "主人",
+      "coins": 594,
+      "race_date": "2026-05-18",
       "game1_attempts": 0,
       "game1_daily_limit": 1,
       "game1_date": "2026-05-16",
-      "last_claim_period": "2026051719",
+      "last_claim_period": "2026051810",
       "extra_guess_chances": 0,
       "ab_feedback_uses": 0,
       "digit_counter_uses": 0,
@@ -120,10 +128,10 @@
     },
     "851368582117195836": {
       "race": "寧寧",
-      "coins": 123,
-      "race_date": "2026-05-17",
-      "last_claim_period": "2026051718",
-      "extra_guess_chances": 2,
+      "coins": 186,
+      "race_date": "2026-05-18",
+      "last_claim_period": "2026051810",
+      "extra_guess_chances": 9,
       "ab_feedback_uses": 0,
       "digit_counter_uses": 0,
       "last_five_digits_uses": 0,
@@ -132,10 +140,10 @@
       "unique_digits_uses": 0
     },
     "946767231914766356": {
-      "race": "主人",
-      "coins": 742,
-      "race_date": "2026-05-17",
-      "last_claim_period": "2026051720",
+      "race": "寧寧",
+      "coins": 807,
+      "race_date": "2026-05-18",
+      "last_claim_period": "2026051810",
       "extra_guess_chances": 0,
       "ab_feedback_uses": 0,
       "digit_counter_uses": 0,
@@ -149,6 +157,32 @@
       "coins": 169,
       "race_date": "2026-05-17",
       "last_claim_period": "2026051720",
+      "extra_guess_chances": 0,
+      "ab_feedback_uses": 0,
+      "digit_counter_uses": 0,
+      "last_five_digits_uses": 0,
+      "divisor_remainder_uses": 0,
+      "lis_query_uses": 0,
+      "unique_digits_uses": 0
+    },
+    "662251679206473730": {
+      "race": "寧寧",
+      "coins": 0,
+      "race_date": "2026-05-18",
+      "last_claim_period": null,
+      "extra_guess_chances": 0,
+      "ab_feedback_uses": 0,
+      "digit_counter_uses": 0,
+      "last_five_digits_uses": 0,
+      "divisor_remainder_uses": 0,
+      "lis_query_uses": 0,
+      "unique_digits_uses": 0
+    },
+    "1504816040763195453": {
+      "race": "主人",
+      "coins": 0,
+      "race_date": "2026-05-18",
+      "last_claim_period": null,
       "extra_guess_chances": 0,
       "ab_feedback_uses": 0,
       "digit_counter_uses": 0,
@@ -246,6 +280,14 @@
           "result": "✅ 猜對",
           "ab_feedback": false
         }
+      ],
+      "charhao": [
+        {
+          "type": "guess",
+          "guess": "0987879487",
+          "result": "✅ 猜對",
+          "ab_feedback": false
+        }
       ]
     },
     "982997324802424872": {
@@ -259,6 +301,18 @@
         {
           "type": "guess",
           "guess": "差 8 個",
+          "result": false,
+          "ab_feedback": false
+        },
+        {
+          "type": "guess",
+          "guess": "差 6 個",
+          "result": false,
+          "ab_feedback": false
+        },
+        {
+          "type": "guess",
+          "guess": "差 7 個",
           "result": false,
           "ab_feedback": false
         }

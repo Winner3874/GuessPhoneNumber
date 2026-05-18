@@ -1,0 +1,304 @@
+{
+  "accounts": {
+    "test0": {
+      "owner": "982997324802424872",
+      "phone": "0987654321",
+      "success_count": 2
+    },
+    "test1": {
+      "owner": "982997324802424872",
+      "phone": "0987123456",
+      "success_count": 0
+    },
+    "blame": {
+      "owner": "851368582117195836",
+      "phone": "0908607317",
+      "success_count": 2
+    },
+    "winner1": {
+      "owner": "982997324802424872",
+      "phone": "0967283423",
+      "success_count": 2
+    },
+    "manson": {
+      "owner": "946767231914766356",
+      "phone": "0968925095",
+      "success_count": 2
+    },
+    "謝嘉穎": {
+      "owner": "873605822595334184",
+      "phone": "0900000000",
+      "success_count": 0
+    },
+    "blame67": {
+      "owner": "851368582117195836",
+      "phone": "0957238524",
+      "success_count": 0
+    },
+    "test2": {
+      "owner": "982997324802424872",
+      "phone": "0987654323",
+      "success_count": 0
+    }
+  },
+  "successful_guesses": {
+    "test0": [
+      "982997324802424872",
+      "1289536156240838681"
+    ],
+    "test1": [],
+    "blame": [
+      "946767231914766356",
+      "873605822595334184"
+    ],
+    "winner1": [
+      "946767231914766356",
+      "851368582117195836"
+    ],
+    "manson": [
+      "851368582117195836",
+      "873605822595334184"
+    ],
+    "謝嘉穎": [],
+    "blame67": [],
+    "test2": []
+  },
+  "user_guess_counts": {
+    "982997324802424872": {
+      "hour": "2026051718",
+      "count": 1
+    },
+    "1289536156240838681": {
+      "hour": "2026051717",
+      "count": 1
+    },
+    "851368582117195836": {
+      "hour": "2026051718",
+      "count": 8
+    },
+    "946767231914766356": {
+      "hour": "2026051718",
+      "count": 2
+    },
+    "873605822595334184": {
+      "hour": "2026051718",
+      "count": 3
+    }
+  },
+  "user_profiles": {
+    "982997324802424872": {
+      "race": "寧寧",
+      "coins": 308,
+      "race_date": "2026-05-17",
+      "game1_attempts": 0,
+      "game1_daily_limit": 1,
+      "game1_date": "2026-05-16",
+      "last_claim_period": "2026051719",
+      "extra_guess_chances": 0,
+      "ab_feedback_uses": 0,
+      "digit_counter_uses": 0,
+      "last_five_digits_uses": 0,
+      "divisor_remainder_uses": 0,
+      "lis_query_uses": 0,
+      "unique_digits_uses": 0
+    },
+    "1289536156240838681": {
+      "race": "寧寧",
+      "coins": 5444,
+      "race_date": "2026-05-17",
+      "game1_attempts": 0,
+      "game1_daily_limit": 1,
+      "game1_date": "2026-05-16",
+      "last_claim_period": null,
+      "extra_guess_chances": 7,
+      "ab_feedback_uses": 0,
+      "digit_counter_uses": 7,
+      "last_five_digits_uses": 0,
+      "divisor_remainder_uses": 2,
+      "lis_query_uses": 0,
+      "unique_digits_uses": 0
+    },
+    "851368582117195836": {
+      "race": "寧寧",
+      "coins": 123,
+      "race_date": "2026-05-17",
+      "last_claim_period": "2026051718",
+      "extra_guess_chances": 2,
+      "ab_feedback_uses": 0,
+      "digit_counter_uses": 0,
+      "last_five_digits_uses": 0,
+      "divisor_remainder_uses": 0,
+      "lis_query_uses": 0,
+      "unique_digits_uses": 0
+    },
+    "946767231914766356": {
+      "race": "主人",
+      "coins": 742,
+      "race_date": "2026-05-17",
+      "last_claim_period": "2026051720",
+      "extra_guess_chances": 0,
+      "ab_feedback_uses": 0,
+      "digit_counter_uses": 0,
+      "last_five_digits_uses": 0,
+      "divisor_remainder_uses": 0,
+      "lis_query_uses": 0,
+      "unique_digits_uses": 0
+    },
+    "873605822595334184": {
+      "race": "阿尼的哥哥",
+      "coins": 169,
+      "race_date": "2026-05-17",
+      "last_claim_period": "2026051720",
+      "extra_guess_chances": 0,
+      "ab_feedback_uses": 0,
+      "digit_counter_uses": 0,
+      "last_five_digits_uses": 0,
+      "divisor_remainder_uses": 0,
+      "lis_query_uses": 0,
+      "unique_digits_uses": 0
+    }
+  },
+  "user_records": {
+    "1289536156240838681": {
+      "test0": [
+        {
+          "type": "guess",
+          "target_username": "test0",
+          "guess": "0987878787",
+          "result": "4A0B",
+          "ab_feedback": true,
+          "timestamp": "2026-05-16T23:00:12.973540"
+        },
+        {
+          "type": "lis_query",
+          "target_username": "test0",
+          "result": "最長遞增子序列長度是 2",
+          "timestamp": "2026-05-16T23:02:35.291546"
+        }
+      ],
+      "test1": [
+        {
+          "type": "digit_counter",
+          "result": "數字 8 出現 1 次"
+        },
+        {
+          "type": "last_five_guess",
+          "result": "差 4 個"
+        },
+        {
+          "type": "guess",
+          "guess": "0987654321",
+          "result": "4A6B",
+          "ab_feedback": true
+        },
+        {
+          "type": "digit_counter",
+          "result": "數字 7 出現 1 次"
+        },
+        {
+          "type": "last_five_guess",
+          "result": "差 5 個"
+        },
+        {
+          "type": "unique_digits",
+          "result": "包含的數字有：0 1 2 3 4 5 6 7 8 9"
+        },
+        {
+          "type": "last_five_guess",
+          "result": "✅ 後五碼猜對"
+        },
+        {
+          "type": "digit_counter",
+          "input": "6",
+          "result": "數字 6 出現 1 次"
+        },
+        {
+          "type": "lis_query",
+          "input": null,
+          "result": "最長遞增子序列長度是 7"
+        },
+        {
+          "type": "guess",
+          "guess": "23456",
+          "result": "✅ 後五碼猜對",
+          "ab_feedback": false
+        },
+        {
+          "type": "digit_counter",
+          "input": "1",
+          "result": "數字 1 出現 1 次"
+        }
+      ]
+    },
+    "851368582117195836": {
+      "winner1": [
+        {
+          "type": "guess",
+          "guess": "0967283423",
+          "result": "✅ 猜對",
+          "ab_feedback": false
+        }
+      ],
+      "manson": [
+        {
+          "type": "guess",
+          "guess": "0968925095",
+          "result": "✅ 猜對",
+          "ab_feedback": false
+        }
+      ]
+    },
+    "982997324802424872": {
+      "blame": [
+        {
+          "type": "guess",
+          "guess": "0987253527",
+          "result": "差 7 個",
+          "ab_feedback": false
+        },
+        {
+          "type": "guess",
+          "guess": "差 8 個",
+          "result": false,
+          "ab_feedback": false
+        }
+      ]
+    },
+    "946767231914766356": {
+      "winner1": [
+        {
+          "type": "guess",
+          "guess": "0967283423",
+          "result": "✅ 猜對",
+          "ab_feedback": false
+        }
+      ],
+      "blame": [
+        {
+          "type": "guess",
+          "guess": "0908607317",
+          "result": "✅ 猜對",
+          "ab_feedback": false
+        }
+      ]
+    },
+    "873605822595334184": {
+      "manson": [
+        {
+          "type": "guess",
+          "guess": "0968925095",
+          "result": "✅ 猜對",
+          "ab_feedback": false
+        }
+      ],
+      "blame": [
+        {
+          "type": "guess",
+          "guess": "0908607317",
+          "result": "✅ 猜對",
+          "ab_feedback": false
+        }
+      ]
+    }
+  }
+}
